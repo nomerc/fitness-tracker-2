@@ -1,0 +1,22 @@
+<div fxLayout="row" fxLayoutAlign="end center">
+  <app-header [color]="'green'"></app-header>
+</div>
+
+<div fxLayout="row" fxLayoutAlign="center center">
+  <button
+    mat-raised-button
+    color="primary"
+    a
+    routerLink="/calendar"
+    routerLinkActive="active"
+  >
+    &lt; To main page
+  </button>
+</div>
+
+<div *ngFor="let exercise of chartData | keyvalue">
+  <app-component-card
+    [exerciseName]="exercise.key"
+    [chartData]="exercise.value"
+  ></app-component-card>
+</div>

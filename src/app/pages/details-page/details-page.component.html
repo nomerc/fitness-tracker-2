@@ -1,0 +1,12 @@
+<div class="layout" fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center space-around">
+    <app-header></app-header>
+    <!-- workout header - icon date and edit buttons -->
+    <app-edit-workout [workout]="workout" [date]="date"></app-edit-workout>
+
+    <!-- workout exercises - edit boxes & create and delete buttons -->
+    <app-edit-workout-exercises
+      [workout]="workout"
+    ></app-edit-workout-exercises>
+  </div>
+</div>

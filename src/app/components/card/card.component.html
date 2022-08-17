@@ -1,0 +1,20 @@
+<div class="text" fxLayout="row" fxLayoutAlign="center ">
+  <h4>{{ exerciseName }}</h4>
+</div>
+
+<div class="widget">
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [noData]="chartOptions.noData"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [responsive]="chartOptions.responsive"
+      [fill]="chartOptions.fill"
+      [legend]="chartOptions.legend"
+      [title]="chartOptions.title"
+      [stroke]="chartOptions.stroke"
+      [plotOptions]="chartOptions.plotOptions"
+    ></apx-chart>
+  </div>
+</div>

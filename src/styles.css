@@ -1,0 +1,57 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0 auto;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.workout-day {
+  background-color: orange;
+  border-radius: 100%;
+}
+
+.layout {
+  background: center url("../src/assets/img/fitbg1.jpg");
+  background-size: cover;
+  min-height: 100%;
+  height: auto;
+}
+
+.bg_light_gray {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.login-form {
+  min-width: 150px;
+  max-width: 300px;
+  width: 100%;
+}
+
+.login-full-width {
+  width: 100%;
+}
+
+.login-btn {
+  margin-top: 15px;
+  margin-left: 15px;
+}
+.spinner {
+  display: inline;
+  margin-top: 15px;
+}
+
+.google-login-btn {
+  background-image: url("./assets/img/google-logo.png");
+  background-repeat: no-repeat;
+  background-size: 20%;
+  background-position: 10%;
+  padding-left: 10%;
+  margin-top: 15px;
+  margin-left: 15px;
+}

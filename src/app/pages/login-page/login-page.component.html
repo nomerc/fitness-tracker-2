@@ -1,0 +1,60 @@
+<div class="layout" fxLayout="column" fxLayoutAlign="center center">
+  <div fxLayout="column" fxLayoutAlign="center space-around">
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <h1 style="color: lightgray">Login</h1>
+    </div>
+
+    <form class="login-form bg_light_gray">
+      <!-- <mat-form-field class="login-full-width" appearance="fill">
+        <mat-label>Displayed name</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input #nameInput matInput value="" />
+      </mat-form-field> -->
+
+      <mat-form-field class="login-full-width" appearance="fill">
+        <mat-label>E-mail</mat-label>
+        <mat-icon matPrefix> email</mat-icon>
+        <input #emailInput matInput value="" />
+      </mat-form-field>
+
+      <mat-form-field class="login-full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <mat-icon matPrefix>lock</mat-icon>
+        <input #passwordInput type="password" matInput value="" />
+      </mat-form-field>
+    </form>
+    <div>
+      <div fxLayout="row" fxLayoutAlign="flex-end">
+        <mat-spinner
+          *ngIf="loading"
+          diameter="30"
+          color="accent"
+          class="spinner"
+        ></mat-spinner>
+        <button
+          mat-raised-button
+          color="primary"
+          class="login-btn"
+          (click)="onLoginButtonClicked(emailInput.value, passwordInput.value)"
+        >
+          Login
+        </button>
+        <button
+          (click)="onGoogleSignUp()"
+          mat-raised-button
+          color="primary"
+          class="google-login-btn"
+        >
+          Google
+        </button>
+      </div>
+      <br />
+      <div fxLayout="row" fxLayoutAlign="center">
+        <p style="color: lightgray">
+          Don't have an account?
+          <a style="color: yellow" routerLink="/signup">Sign up!</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
