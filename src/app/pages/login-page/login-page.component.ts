@@ -5,6 +5,7 @@ import { AuthService } from "src/app/auth.service";
 import Utils from "src/utils/utils";
 import { environment } from "src/environments/environment";
 import { DataService } from "src/app/data.service";
+import { User } from "src/models/user.model";
 
 @Component({
   selector: "app-login-page",
@@ -22,10 +23,21 @@ export class LoginPageComponent implements OnInit {
   loading = false;
   loading_g = false;
 
+  user: User = {
+    _id: "",
+    username: "",
+    displayedName: "",
+    providerName: "",
+    password: "",
+  };
+
   utils = new Utils(this._snackBar, this.dataService);
 
   ngOnInit(): void {}
-  onLoginButtonClicked(username: string, password: string) {
+  onLoginButtonClicked(
+    username = this.user.username,
+    password = this.user.password
+  ) {
     this.showSpinner(this.loading);
 
     this.authService.localSignUp(username, password).subscribe({

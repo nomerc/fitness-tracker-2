@@ -1,7 +1,5 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
-import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { User } from "../models/user.model";
 
@@ -12,7 +10,6 @@ export class AuthService {
   readonly ROOT_URL: string;
 
   constructor(
-    private router: Router,
     private http: HttpClient // private webService: WebRequestService
   ) {
     this.ROOT_URL = environment.SERVER_URI;
@@ -53,11 +50,26 @@ export class AuthService {
   // googleRegister() {
   //   //can't be placed here. Check register-page.component instead
   // }
+  isAuthenticated() {
+    return this.http.post(
+      `${this.ROOT_URL}/auth/isAuthenticated`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
+  }
 
-  signOut(): Observable<any> {
+  signOut() {
     this.clearSession();
-    this.router.navigate(["/"]);
-    return this.http.get(`${this.ROOT_URL}/auth/signout`);
+    return this.http.post(
+      `${this.ROOT_URL}/auth/signout`,
+      {},
+      {
+        observe: "response",
+        withCredentials: true,
+      }
+    );
   }
 
   getUserName() {

@@ -25,6 +25,7 @@ export class DataService {
 
   getAllWorkouts(): Observable<Workout[]> {
     return this.http.get<Workout[]>(`${this.ROOT_URL}/workouts`, {
+      // observe: "response",
       withCredentials: true,
     });
   }

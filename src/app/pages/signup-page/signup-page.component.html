@@ -4,26 +4,71 @@
       <h1 style="color: lightgray">Sign up</h1>
     </div>
 
-    <form class="login-form bg_light_gray">
-      <mat-form-field class="login-full-width" appearance="fill">
+    <form
+      class="login-form"
+      (ngSubmit)="onSignupButtonClicked()"
+      #userForm="ngForm"
+    >
+      <mat-form-field class="login-full-width bg_light_gray" appearance="fill">
         <mat-label>Displayed name</mat-label>
         <mat-icon matPrefix>person</mat-icon>
-        <input #nameInput matInput value="" />
+        <input
+          matInput
+          name="displayedName"
+          class="form-control"
+          required
+          minlength="2"
+          [(ngModel)]="user.displayedName"
+          #nameInput="ngModel"
+        />
+        <mat-error *ngIf="nameInput.errors?.['required']"
+          >Displayed name is required.
+        </mat-error>
+        <mat-error *ngIf="nameInput.errors?.['minlength']">
+          Displayed name must be at least 2 characters long.
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="login-full-width" appearance="fill">
-        <mat-label>E-mail</mat-label>
-        <mat-icon matPrefix> email</mat-icon>
-        <input #emailInput matInput value="" />
+      <mat-form-field class="login-full-width bg_light_gray" appearance="fill">
+        <mat-label>Login</mat-label>
+        <mat-icon matPrefix> person</mat-icon>
+        <input
+          matInput
+          name="username"
+          class="form-control"
+          required
+          minlength="4"
+          [(ngModel)]="user.username"
+          #loginInput="ngModel"
+        />
+        <mat-error *ngIf="loginInput.errors?.['required']"
+          >Name is required.
+        </mat-error>
+        <mat-error *ngIf="loginInput.errors?.['minlength']">
+          Name must be at least 4 characters long.
+        </mat-error>
       </mat-form-field>
 
-      <mat-form-field class="login-full-width" appearance="fill">
+      <mat-form-field class="login-full-width bg_light_gray" appearance="fill">
         <mat-label>Password</mat-label>
         <mat-icon matPrefix>lock</mat-icon>
-        <input #passwordInput type="password" matInput value="" />
+        <input
+          matInput
+          name="password"
+          type="password"
+          class="form-control"
+          required
+          minlength="8"
+          [(ngModel)]="user.password"
+          #passwordInput="ngModel"
+        />
+        <mat-error *ngIf="passwordInput.errors?.['required']"
+          >Password is required.
+        </mat-error>
+        <mat-error *ngIf="passwordInput.errors?.['minlength']">
+          Name must be at least 8 characters long.
+        </mat-error>
       </mat-form-field>
-    </form>
-    <div>
       <div fxLayout="row" fxLayoutAlign="flex-end">
         <mat-spinner
           *ngIf="loading"
@@ -33,27 +78,16 @@
         ></mat-spinner>
         <button
           mat-raised-button
+          type="submit"
           color="primary"
           style="margin-top: 15px"
-          (click)="
-            onSignupButtonClicked(
-              nameInput.value,
-              emailInput.value,
-              passwordInput.value
-            )
-          "
+          [disabled]="!userForm.form.valid"
         >
           Sign up
         </button>
-        <!-- <button
-          (click)="onSignupWithGoogleButtonClicked()"
-          mat-raised-button
-          color="primary"
-          class="google-login-btn"
-        >
-          Google
-        </button> -->
       </div>
+    </form>
+    <div>
       <br />
       <div fxLayout="row" fxLayoutAlign="center">
         <p style="color: lightgray">

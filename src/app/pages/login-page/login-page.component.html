@@ -4,26 +4,36 @@
       <h1 style="color: lightgray">Login</h1>
     </div>
 
-    <form class="login-form bg_light_gray">
-      <!-- <mat-form-field class="login-full-width" appearance="fill">
-        <mat-label>Displayed name</mat-label>
-        <mat-icon matPrefix>person</mat-icon>
-        <input #nameInput matInput value="" />
-      </mat-form-field> -->
-
-      <mat-form-field class="login-full-width" appearance="fill">
-        <mat-label>E-mail</mat-label>
-        <mat-icon matPrefix> email</mat-icon>
-        <input #emailInput matInput value="" />
+    <form
+      class="login-form"
+      (ngSubmit)="onLoginButtonClicked()"
+      #userForm="ngForm"
+    >
+      <mat-form-field class="login-full-width bg_light_gray" appearance="fill">
+        <mat-label>Login</mat-label>
+        <mat-icon matPrefix> person</mat-icon>
+        <input
+          matInput
+          name="username"
+          class="form-control"
+          [(ngModel)]="user.username"
+          #loginInput="ngModel"
+        />
       </mat-form-field>
 
-      <mat-form-field class="login-full-width" appearance="fill">
+      <mat-form-field class="login-full-width bg_light_gray" appearance="fill">
         <mat-label>Password</mat-label>
         <mat-icon matPrefix>lock</mat-icon>
-        <input #passwordInput type="password" matInput value="" />
+        <input
+          name="password"
+          type="password"
+          matInput
+          class="form-control"
+          [(ngModel)]="user.password"
+          #passwordInput="ngModel"
+        />
       </mat-form-field>
-    </form>
-    <div>
+
       <div fxLayout="row" fxLayoutAlign="flex-end">
         <mat-spinner
           *ngIf="loading"
@@ -33,9 +43,9 @@
         ></mat-spinner>
         <button
           mat-raised-button
+          type="submit"
           color="primary"
           class="login-btn"
-          (click)="onLoginButtonClicked(emailInput.value, passwordInput.value)"
         >
           Login
         </button>
@@ -43,11 +53,22 @@
           (click)="onGoogleSignUp()"
           mat-raised-button
           color="primary"
-          class="google-login-btn"
+          class="social-login-btn google-login-btn"
         >
           Google
         </button>
+
+        <!-- (click)="onFacebookSignUp()" -->
+        <button
+          mat-raised-button
+          color="primary"
+          class="social-login-btn facebook-login-btn"
+        >
+          Facebook
+        </button>
       </div>
+    </form>
+    <div>
       <br />
       <div fxLayout="row" fxLayoutAlign="center">
         <p style="color: lightgray">
